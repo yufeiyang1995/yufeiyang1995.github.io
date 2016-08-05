@@ -1,9 +1,5 @@
 auto: true
 
-markdown: rdiscount
-
-highlighter: 'pygments'
-#paginate: 8
 permalink: /:title
 
 name: “Young's Blog”
