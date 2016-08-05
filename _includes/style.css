@@ -167,6 +167,9 @@ a.external:hover {
   max-width: 500px;
   background: #59a0b0;
 }
+.blog .aside{
+    background-image:url(https://d233eq3e3p3cv0.cloudfront.net/max/1000/0*cF2i1ZosSP_UTJig.jpeg);
+}
 @media screen and (max-width: 767px) {
   .index-wrapper .aside {
     position: relative;
