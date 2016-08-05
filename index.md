@@ -8,8 +8,8 @@ layout: default
       <div class="info-card">
         <h1>Young</h1>
         <a href="http://weibo.com/yufeiyang1995" target="_blank"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
-        <a href="https://github.com/yufeiyang1995" target="_blank"><img src="http://github.com/favicon.ico" alt="" width="22"/></a>
         <a href="https://www.zhihu.com/people/yang-yu-fei-61-46" target="_blank"><img src="http://www.zhihu.com/favicon.ico" alt="" width="22"/></a>
+        <a href="https://github.com/yufeiyang1995" target="_blank"><img src="http://github.com/favicon.ico" alt="" width="22"/></a>
       </div>
       <div id="aside"></div>
     </div>
