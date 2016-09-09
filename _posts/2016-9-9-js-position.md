@@ -25,6 +25,7 @@ els = document.getElementsById("block");
 var x=parseInt(els.style.left)+20;      //els为获取的对象，left为该对象位置信息，转化为int后进行修改
 els.style.left = x + "px";				//对els的left信息进行修改，但注意添加px
 ```
+
 #### 2. 通过名字获取对象
 因为我最开始对蛇的各个模块设置了相同的name，所以不知道该如何获取。但是通过查找资料之后，发现可以获取到一个列表的对象，然后对这一列表遍历，对列表中的对象逐一修改。
 
@@ -36,6 +37,7 @@ for (var i = 0, j = els.length; i < j; i++){
 	alert(els[i].value);
 }
 ```
+
 #### 3. 时间循环实现动画效果
 经过查找资料，发现两个函数setInterval()和setTimeout(),第一个函数为时间循环，第二个函数表示时间延迟。这里使用第一个函数可以完成隔多长时间调用某一个函数的效果。
 
