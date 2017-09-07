@@ -17,7 +17,9 @@ description: 由于要开始进行Android Runtime方面的研究工作，所以�
 
 
 > sudo apt-get install git 
+
 > git config –global user.email "test@test.com" 
+
 > git config –global user.name "test"
 
 
