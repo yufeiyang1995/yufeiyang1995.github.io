@@ -25,8 +25,7 @@ git config –global user.name "test"
 
 * 之后，我们需要下载Repo工具用于后面源码的下载
 
-<pre><code>
-mkdir ~/bin
+<pre><code>mkdir ~/bin
 PATH=~/bin:$PATH
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
@@ -36,16 +35,16 @@ chmod a+x ~/bin/repo
 
 * 然后，为了编译Android源代码我们还需要进行java的安装，因为Android 5.x-6.0采用的都是openjdk 7，所以我们也需要安装openjdk 7。如果我们直接apt-get，会发现无法下载，我们需要先设置ppa：
 
-```
+`
 sudo add-apt-repository ppa:openjdk-r/ppa 
 sudo apt-get update
-```
+`
 
 * 然后执行安装命令
 
-```
+---
 sudo apt-get install openjdk-7-jdk
-```
+
 
 在安装好Java之后，如果你的系统中有其他的Java版本你可能需要进行Java版本的切换，命令如下：
 
