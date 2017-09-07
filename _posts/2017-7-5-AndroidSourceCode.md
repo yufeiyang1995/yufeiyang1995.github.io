@@ -15,10 +15,11 @@ description: 由于要开始进行Android Runtime方面的研究工作，所以�
 
 * 首先，下载源码一定要安装git，可安如下步骤进行操作：
 
-
-> sudo apt-get install git 
-> git config –global user.email "test@test.com" 
-> git config –global user.name "test"
+```
+sudo apt-get install git 
+git config –global user.email "test@test.com" 
+git config –global user.name "test"
+```
 
 
 其中test@test.com和test分别是你的邮箱和用户名
@@ -145,4 +146,3 @@ emulator
 1. 可能在make最开始提示java编译版本不对，这是只需要按上面介绍的切换java版本的指令进行操作，切换到正确的openjdk版本即可。
 
 2. 在make是可能出现很多环境配置上的问题，例如要修改javadoc，javac等，但大部分都可以在网上找到相关资料进行修改。
-
