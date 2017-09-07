@@ -13,7 +13,7 @@ description: 由于要开始进行Android Runtime方面的研究工作，所以�
 
 下面介绍需要安装的配置：
 
-1. 首先，下载源码一定要安装git，可安如下步骤进行操作：
+* 首先，下载源码一定要安装git，可安如下步骤进行操作：
 
 ```
 sudo apt-get install git 
@@ -23,25 +23,25 @@ git config –global user.name "test"
 
 其中test@test.com和test分别是你的邮箱和用户名
 
-2. 之后，我们需要下载Repo工具用于后面源码的下载
+* 之后，我们需要下载Repo工具用于后面源码的下载
 
-```
+<pre><code>
 mkdir ~/bin
 PATH=~/bin:$PATH
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
-```
+</code></pre>
 
 这里不对Repo的工作原理进行介绍，想要了解可以在网上查找一些相关资料。
 
-3. 然后，为了编译Android源代码我们还需要进行java的安装，因为Android 5.x-6.0采用的都是openjdk 7，所以我们也需要安装openjdk 7。如果我们直接apt-get，会发现无法下载，我们需要先设置ppa：
+* 然后，为了编译Android源代码我们还需要进行java的安装，因为Android 5.x-6.0采用的都是openjdk 7，所以我们也需要安装openjdk 7。如果我们直接apt-get，会发现无法下载，我们需要先设置ppa：
 
 ```
 sudo add-apt-repository ppa:openjdk-r/ppa 
 sudo apt-get update
 ```
 
-然后执行安装命令
+* 然后执行安装命令
 
 ```
 sudo apt-get install openjdk-7-jdk
