@@ -7,7 +7,7 @@ description: 由于要开始进行Android Runtime方面的研究工作，所以�
 
 ## 源码下载
 
-### 环境配置11
+### 环境配置
 
 我使用的是最新的系统Ubuntu 16.04，其中硬盘内存最好设置的大一些，因为源码及其编译之后的内容都会占用比较大的空间。同时，内存最好也设大一些，避免发生编译时内存不足的情况。
 
@@ -15,11 +15,11 @@ description: 由于要开始进行Android Runtime方面的研究工作，所以�
 
 * 首先，下载源码一定要安装git，可安如下步骤进行操作：
 
-```
-sudo apt-get install git 
-git config –global user.email "test@test.com" 
-git config –global user.name "test"
-```
+
+> sudo apt-get install git 
+> git config –global user.email "test@test.com" 
+> git config –global user.name "test"
+
 
 其中test@test.com和test分别是你的邮箱和用户名
 
@@ -35,16 +35,17 @@ chmod a+x ~/bin/repo
 
 * 然后，为了编译Android源代码我们还需要进行java的安装，因为Android 5.x-6.0采用的都是openjdk 7，所以我们也需要安装openjdk 7。如果我们直接apt-get，会发现无法下载，我们需要先设置ppa：
 
-
-    sudo add-apt-repository ppa:openjdk-r/ppa 
-    sudo apt-get update
+```
+sudo add-apt-repository ppa:openjdk-r/ppa 
+sudo apt-get update
+```
 
 
 * 然后执行安装命令
 
----
+```
 sudo apt-get install openjdk-7-jdk
-
+```
 
 在安装好Java之后，如果你的系统中有其他的Java版本你可能需要进行Java版本的切换，命令如下：
 
