@@ -56,14 +56,14 @@ sudo update-alternatives --config javac
 
 ### 源码下载
 
-1. 建立源码文件夹
+##### 1. 建立源码文件夹
 
 ```
 mkdir source
 cd source
 ```
 
-2. 初始化仓库
+##### 2. 初始化仓库
 
 ```
 repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest
@@ -81,9 +81,10 @@ repo init -u https://aosp.tuna.tsinghua.edu.cn/platform/manifest -b android-4.0.
 wget -c -t 0 https://mirrors.tuna.tsinghua.edu.cn/aosp-monthly/aosp-latest.tar 
 tar -vxzf aosp-latest.tar
 cd aosp
+repo sync
 ```
 
-3. 同步源代码到本地
+##### 3. 同步源代码到本地
 
 ```
 repo sync
@@ -93,13 +94,13 @@ repo sync
 
 ### 编译源代码
 
-1. 进入源码目录初始化编译环境
+##### 1. 进入源码目录初始化编译环境
 
 ```
 source build/envsetup.sh
 ```
 
-2. 选择目标
+##### 2. 选择目标
 
 ```
 lunch
@@ -111,7 +112,7 @@ lunch
 lunch aosp_arm64-eng
 ```
 
-3. 开始编译
+##### 3. 开始编译
 
 通过make指令进行代码编译
 
@@ -127,7 +128,7 @@ make -j8
 
 运行顺利的话，几个小时之后可以看到 make completed successfully (01:18:45(hh:mm:ss)) ，表示编译成功
 
-4. 运行模拟器
+##### 4. 运行模拟器
 
 在编译完成之后,就可以通过以下命令运行Android虚拟机了,命令如下：
 
@@ -143,6 +144,5 @@ emulator
 
 1. 可能在make最开始提示java编译版本不对，这是只需要按上面介绍的切换java版本的指令进行操作，切换到正确的openjdk版本即可。
 
-2. 在make是可能出现
+2. 在make是可能出现很多环境配置上的问题，例如要修改javadoc，javac等，但大部分都可以在网上找到相关资料进行修改。
 
-3. 我是在Ubuntu 16.04中编译的，会出现
