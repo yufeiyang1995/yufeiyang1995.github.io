@@ -37,7 +37,7 @@ sudo apt-get install android-tools-adb
 
 * 首先，我们要先下载android-sdk-tools安装包，安装后得到Android SDK Manager，这里就有我们想要的adb.exe。（这里我遇到一个问题，最新的android-sdk-tools安装之后好像只能通过命令行的方式进行Android API，tools的下载，我没搞懂怎么用，就在网上找到了一个2015年的旧版，安装后可用）
 
-* 安装好SDK之后，进行环境变量的配置，创建系统变量adb，并在系统变量Path中添加%adb%，下面是我配置的例子
+* 安装好SDK之后，进行环境变量的配置，创建系统变量adb并设为adb的所在目录，并在系统变量Path中添加%adb%，下面是我配置的例子
 
 > adb 设为 F:\Android\android-sdk\platform-tools
 
