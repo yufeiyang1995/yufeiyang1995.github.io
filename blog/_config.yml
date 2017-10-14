@@ -1,0 +1,10 @@
+auto: true
+
+permalink: /:title
+
+name: “Young's Blog”
+title: Young's blog
+description: Everything about Young.
+url: http://yufeiyang1995.github.io
+feed: /atom.xml
+author_info: <a href="http://yufeiyang1995.github.io/">Young</a>
