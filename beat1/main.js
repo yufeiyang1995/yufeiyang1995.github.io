@@ -99,8 +99,8 @@ function getTranslateY(el){
     return getTranslate(el)[5];
 }
 function OurPlane(){//使用到单例模式
-    this.boomimage = 'images/my_boom.gif';
-    this.planeimage = 'images/my_plane.gif';
+    this.boomimage = 'images/wz.png';
+    this.planeimage = 'images/wz.png';
     this.width = 66;
     this.height = 88;
     this.x = (deviceWidth-this.width)/2;
@@ -172,13 +172,13 @@ function start(){
     if(mark == 20){
         mark1++;
         if(mark1%5 == 0){
-            enemies.push(new Enemy(6,0,274,46,60,5000,360,getRan(1,3),'images/middle_boom.gif','images/enemy3_fly_1.png'));
+            enemies.push(new Enemy(6,0,274,46,60,5000,360,getRan(1,3),'images/yyf2-3.png','images/yyf1-3.png'));
         }
         if(mark1 == 20){
-            enemies.push(new Enemy(12,0,210,110,164,30000,540,1,'images/big_boom.gif','images/enemy2_fly_1.png'));
+            enemies.push(new Enemy(12,0,210,110,164,30000,540,1,'images/yyf2-2.png','images/yyf1-2.png'));
             mark1 = 0;
         }else{
-            enemies.push(new Enemy(1,0,286,34,24,100,360,4,'images/small_boom.gif','images/enemy1_fly_1.png'));
+            enemies.push(new Enemy(1,0,286,34,24,100,360,4,'images/yyf2-1.png','images/yyf1-1.png'));
         }
         mark = 0;
     }
