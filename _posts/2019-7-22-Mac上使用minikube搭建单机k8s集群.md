@@ -64,6 +64,20 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 
   * minikube 提供了dashboard可视化界面：`minikube dashboard`
 
+* docker daemon的切换
+
+  * 切换到minikube的docker daemon
+
+    ```
+    eval $(minikube docker-env)
+    ```
+
+  * 切换回用户docker daemon
+
+    ```
+    eval $(minikube docker-env -u)
+    ```
+
 * 删除应用
 
   ```
@@ -131,11 +145,91 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 
   虽然之后我又试着去改docker的proxy等等方法，但是我的minikube在不用命令指定代理时总是不使用环境变量中的代理，所以一直没有成功，由于时间原因就先不折腾了，等任务做完之后再来研究怎么回事吧。
 
-  
+* 更新：后面发现这样设置代理内网docker镜像无法访问，于是修改启动指令：
+
+  ```
+  minikube start  --vm-driver virtualbox --docker-env http_proxy="http://web-proxy.tencent.com:8080" --docker-env https_proxy="http://web-proxy.tencent.com:8080" --docker-env no_proxy="localhost,.oa.com,.local,.1,.2,.3,.4,.5,.6,.7,.8,.9,.10,.11,.12,.13,.14,.15,.16,.17,.18,.19,.20,.21,.22,.23,.24,.25,.26,.27,.28,.29,.30,.31,.32,.33,.34,.35,.36,.37,.38,.39,.40,.41,.42,.43,.44,.45,.46,.47,.48,.49,.50,.51,.52,.53,.54,.55,.56,.57,.58,.59,.60,.61,.62,.63,.64,.65,.66,.67,.68,.69,.70,.71,.72,.73,.74,.75,.76,.77,.78,.79,.80,.81,.82,.83,.84,.85,.86,.87,.88,.89,.90,.91,.92,.93,.94,.95,.96,.97,.98,.99,.100,.101,.102,.103,.104,.105,.106,.107,.108,.109,.110,.111,.112,.113,.114,.115,.116,.117,.118,.119,.120,.121,.122,.123,.124,.125,.126,.127,.128,.129,.130,.131,.132,.133,.134,.135,.136,.137,.138,.139,.140,.141,.142,.143,.144,.145,.146,.147,.148,.149,.150,.151,.152,.153,.154,.155,.156,.157,.158,.159,.160,.161,.162,.163,.164,.165,.166,.167,.168,.169,.170,.171,.172,.173,.174,.175,.176,.177,.178,.179,.180,.181,.182,.183,.184,.185,.186,.187,.188,.189,.190,.191,.192,.193,.194,.195,.196,.197,.198,.199,.200,.201,.202,.203,.204,.205,.206,.207,.208,.209,.210,.211,.212,.213,.214,.215,.216,.217,.218,.219,.220,.221,.222,.223,.224,.225,.226,.227,.228,.229,.230,.231,.232,.233,.234,.235,.236,.237,.238,.239,.240,.241,.242,.243,.244,.245,.246,.247,.248,.249,.250,.251,.252,.253,.254,.255"
+  ```
+
+#### 4. 用yaml文件创建服务
+
+* 首先，创建镜像到minikube的docker daemon中去，在构建好dockerfile的目录中运行指令（这里暂时不关心dockerfile的书写）
+
+  ```
+  eval $(minikube docker-env)
+  docker build -t docker.oa.com/unlikezhang/yunsou_web:t ./
+  ```
+
+* 然后，再利用yaml文件构建k8s服务（这里同样先不关心yaml文件的书写）
+
+  ```
+  kubectl create -f xxx.yaml
+  ```
+
+---
+
+**突然，发生了一连串的问题问题**
+
+* 1. 先是报错如下，搜索后发现由于kubernate版本过旧。
+
+```
+Error from server (BadRequest): error when creating "yunsou_web_service.yaml": Deployment in version "v1" cannot be handled as a Deployment: no kind "Deployment" is registered for version "apps/v1"
+```
+
+于是卸载kubectl，即删除`/usr/local/bin`里的kubectl文件，安装最新版
+
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl \
+	&& chmod +x kubectl \
+	&& mv kubectl /usr/local/bin/
+```
+
+* 2. 然后报错如下，发现kubernate客户端与服务端版本相差太多
+
+```
+Error from server (NotFound): the server could not find the requested resource
+```
+
+于是卸载minikube，即删除`/usr/local/bin`里的minikube文件
+
+```
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64 \
+  && chmod +x minikube \
+  && mv minikube /usr/local/bin/
+```
+
+* 3. 又报错，发现由于kubernate中docker没有获取拉镜像权限
+
+```
+Error response from daemon: Get https://docker.oa.com/v2/: Gateway Time-out
+```
+
+登陆之前, 需要设置证书
+
+```
+minikube ssh
+sudo mkdir -p /etc/docker/certs.d/docker.oa.com; 
+sudo mkdir -p /etc/docker/certs.d/registry.oa.com; 
+sudo wget docker.oa.com/cert/gaia.crt -O /etc/docker/certs.d/docker.oa.com/ca.crt ;  
+sudo cp /etc/docker/certs.d/docker.oa.com/ca.crt /etc/docker/certs.d/registry.oa.com/ ;
+```
+
+然后登录:
+
+```
+docker login docker.xxx.com
+Username:
+Password:
+```
+
+* 最后，重新用yaml创建服务成功
+
+
 
 #### 参考
 
 * <https://blog.zhesih.com/2018/06/24/k8s-minikube-setup/>
 * <https://blog.alexellis.io/minikube-behind-proxy/>
 * <https://github.com/kubernetes/minikube/blob/master/docs/http_proxy.md>
+* <https://blog.csdn.net/wucong60/article/details/81586272>
 
