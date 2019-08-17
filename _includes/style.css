@@ -492,11 +492,7 @@ a.external:hover {
 .pln {
   color: #1b181b;
 }
-ol.linenums {
-  margin-top: 0;
-  margin-bottom: 0;
-  color: #5a7b8c;
-}
+
 li.L0,
 li.L1,
 li.L2,
